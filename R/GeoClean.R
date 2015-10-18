@@ -1,9 +1,9 @@
 GeoClean <- function(x, isna = TRUE, isnumeric = TRUE, coordinatevalidity = TRUE, containszero = TRUE, zerozero = TRUE, zerozerothresh = 1,
                      latequallong = TRUE, GBIFhead = FALSE, countrycentroid = FALSE, contthresh = 0.5, capitalcoords = FALSE, capthresh = 0.5, 
-                     countrycheck = FALSE, polygons, referencecountries = countryref, verbose = FALSE) {
+                     countrycheck = FALSE, polygons, referencecountries = countryref, outp = c("summary", "detailed", "cleaned")) {
     
     dat <- x
-    
+
     if ("lon" %in% names(dat)) {
         dat$XCOOR <- unlist(dat["lon"])
     }
@@ -31,7 +31,13 @@ GeoClean <- function(x, isna = TRUE, isnumeric = TRUE, coordinatevalidity = TRUE
         dat <- data.frame(unlist(apply(dat, 2, function(x) gsub("^$|^ $", NA, x))))
     }
     
+    if(dim(dat)[2] == 3){
+      dat <- dat[c("identifier", "XCOOR", "YCOOR")]
+      countrycheck <- FALSE
+      warning("no country information found, countrycheck test skipped")
+    }else{
     dat <- dat[c("identifier", "XCOOR", "YCOOR", "country")]
+    }
     verb <- dat
     dat$clean <- T
     
@@ -147,13 +153,30 @@ GeoClean <- function(x, isna = TRUE, isnumeric = TRUE, coordinatevalidity = TRUE
         } else {
             verb$country.check <- as.character(dat$country) == as.character(contest$sample_table[, 2])
             dat$clean[which(verb$country.check == FALSE)] <- FALSE
-            dat$clean[is.na(verb$country.check)] <- FALSE
+            dat$clean[is.na(verb$country.check)] <- TRUE
+            warning("unidentified country information test skipped and value set to TRUE without testing")
         }
     }
-    if (verbose == T) {
-        # IF verbose == T give out data.frame instead of vector, where each test is a column
+    if (outp[1] == "detailed") {
+      verb$summary <- dat$clean
+      rownames(verb) <- rownames(x)
         return(verb)
-    } else {
+    }
+    if(outp[1] == "summary"){
         return(dat$clean)
     }
+    if(outp[1] == "cleaned"){
+      verb$summary <- dat$clean
+      rownames(verb) <- rownames(x)
+      if(dim(x)[2] == 3){
+        out <- verb[verb$summary == TRUE, 1:3]
+      }else{ 
+      out <- verb[verb$summary == TRUE, 1:4]
+      }
+      out$XCOOR <- as.numeric(as.character(out$XCOOR))
+      out$YCOOR <- as.numeric(as.character(out$YCOOR))
+      return(out)
+    
+    }
+
 } 

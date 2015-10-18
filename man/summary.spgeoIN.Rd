@@ -16,7 +16,7 @@ Summarizes the content of a spgeoIN object.
 object of class spgeoIN
 }
   \item{areanames}{
-character. Indicating the column with the area names, if not specified the ID slot is displayed.
+character. Indicating the column with the area names, if not specified, the ID slot is displayed.
 }
   \item{\dots}{
 arguments to be passed to methods, such as graphical parameters (see par).

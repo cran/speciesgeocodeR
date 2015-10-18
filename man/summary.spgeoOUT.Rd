@@ -5,17 +5,17 @@
 Summary Method for SpgeoOUT
 }
 \description{
-\code{summary.sp.geoOUT}, a method for the summary generic. It is designed for a quick overview of spgeoOUT objects.
+summary method for objects of the class \code{spgeoOUT}
 }
 \usage{
 \method{summary}{spgeoOUT}(object, areanames = NA, ...)
 }
 \arguments{
   \item{object}{
-object of the class spgeoOUT
+an object of the class spgeoOUT
 }
   \item{areanames}{
-character. Indicating the column containing the area names, if not specified the ID slot is displayed.
+a character string. Indicating the column containing the area names, if not specified the ID slot is displayed.
 }
   \item{\dots}{
 arguments to be passed to methods, such as graphical parameters (see par).

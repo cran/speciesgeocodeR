@@ -5,7 +5,7 @@
 Load the WWF Terrestrial Ecoregions
 }
 \description{
-This function downloads a shape-file containing the terrestrial ecoregions as defined by Olson et al. 2001 from worldwildlife.org/publications/terrestrial-ecoregions-of-theworld, unpacks them and loads the into R.
+Downloads a shape-file containing the terrestrial ecoregions as defined by Olson et al. 2001 from worldwildlife.org/publications/terrestrial-ecoregions-of-theworld, unpacks them and loads the into R.
 }
 \usage{
 WwfLoad(x = "")
@@ -15,7 +15,7 @@ WwfLoad(x = "")
 }
 
 \value{
-An object of the class SpatialPolygonsDataframe
+An object of the class \code{SpatialPolygonsDataframe}
 }
 \references{
 Olson, D. M., Dinerstein, E. ,Wikramanayake,  E. D., Burgess,  N. D., Powel, G. V. N., Underwood,  E. C.,
@@ -30,7 +30,8 @@ ecoregions of the world: A new map of life on earth. \emph{BioScience}, \bold{51
 See the speciesgeocodeR documentation for further information and examples.
 }
 \examples{
-\dontrun{wwf_eco <- WwfLoad()}
-\dontrun{plot(wwf_eco)}
-\dontrun{names(wwf_eco)}
+\dontrun{
+wwf_eco <- WwfLoad()
+plot(wwf_eco)
+names(wwf_eco)}
 }

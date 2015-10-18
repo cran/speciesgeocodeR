@@ -13,7 +13,7 @@ GetElevation(x)
   \item{x}{an object of the class data.frame, spgeoIN, spgeoOUT or a character string. }
 }
 \details{
-If x is a data.frame, it must have 3 columns: species name, longitude and latitude.  If x is a character string it can be the path to a tab delimited .txt file with three columns:  species name, longitude and latitude.  If x is a character string of species names, the function will first use rgbif to download occurrence information from GBIF.  In this case no data cleaning is performed, except from the \sQuote{removeZeros} option of rgbif.
+If x is a \code{data.frame}, it must have 3 columns: species name, longitude and latitude.  If x is a character string it can be the path to a tab delimited .txt file with three columns:  species name, longitude and latitude.  If x is a character string of species names, the function will use rgbif to download occurrence information from GBIF.  In this case no data cleaning is performed, except from the \sQuote{removeZeros} option of rgbif.
 }
 \value{
 A vector of elevation values.

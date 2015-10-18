@@ -1,6 +1,6 @@
 SpeciesGeoCoder <- function(x, y, coex = FALSE, graphs = TRUE, areanames = "", 
                             occ.thresh = 0, elevation = FALSE, threshold,
-                            verbose = FALSE, ...) {
+                            verbose = FALSE, cleaning = FALSE, ...) {
     if (elevation == T) {
         if (class(x) == "character") {
             coords <- read.table(x, sep = "\t", header = T, fill = T, quote = "")
@@ -26,8 +26,8 @@ SpeciesGeoCoder <- function(x, y, coex = FALSE, graphs = TRUE, areanames = "",
         tt <- split(coords, coords$cuts)
         
         tt <- lapply(tt, function(x) .adjFormat(x))
-        ini <- lapply(tt, function(x) ReadPoints(x, y, ...))
-        outo <- lapply(ini, function(x) SpGeoCodH(x, areanames, occ.thresh = occ.thresh, ...))
+        ini <- lapply(tt, function(x) ReadPoints(x, y, cleaning = cleaning, ...))
+        outo <- lapply(ini, function(x) SpGeoCodH(x, areanames, occ.thresh = occ.thresh))
         
         names(outo) <- gsub(">", "over_", names(outo))
         names(outo) <- paste(names(outo), "_meters", sep = "")
@@ -41,22 +41,22 @@ SpeciesGeoCoder <- function(x, y, coex = FALSE, graphs = TRUE, areanames = "",
             
             .WriteTablesSpGeo(outo[[i]], prefix = names(outo)[i])
         }
-        .NexusOut(outo, ...)
+        .NexusOut(outo)
         
         if (graphs == T) {
             for (i in 1:length(outo)) {
-                .OutPlotSpPoly(outo[[i]], prefix = names(outo)[i])  #, ...)
-                .OutBarChartPoly(outo[[i]], prefix = names(outo)[i])  #, ...)
-                .OutBarChartSpec(outo[[i]], prefix = names(outo)[i])  #, ...)
-                .OutMapAll(outo[[i]], prefix = names(outo)[i])  #, ...)
-                .OutMapPerSpecies(outo[[i]], prefix = names(outo)[i])  #, ...)
-                .OutMapPerPoly(outo[[i]], areanames, prefix = names(outo)[i])  #, ...)
+                .OutPlotSpPoly(outo[[i]], prefix = names(outo)[i]) 
+                .OutBarChartPoly(outo[[i]], prefix = names(outo)[i])
+                .OutBarChartSpec(outo[[i]], prefix = names(outo)[i])
+                .OutMapAll(outo[[i]], prefix = names(outo)[i])
+                .OutMapPerSpecies(outo[[i]], prefix = names(outo)[i])
+                .OutMapPerPoly(outo[[i]], areanames, prefix = names(outo)[i])
             }
         }
         
     } else {
-        ini <- ReadPoints(x, y, ...)
-        outo <- SpGeoCodH(ini, areanames, occ.thresh = occ.thresh, ...)
+        ini <- ReadPoints(x, y, cleaning = cleaning, ...)
+        outo <- SpGeoCodH(ini, areanames, occ.thresh = occ.thresh)
         
         if (coex == T) {
             outo <- CoExClass(outo)
@@ -64,15 +64,15 @@ SpeciesGeoCoder <- function(x, y, coex = FALSE, graphs = TRUE, areanames = "",
         }
         
         .WriteTablesSpGeo(outo)
-        .NexusOut(outo, ...)
+        .NexusOut(outo)
         
         if (graphs == T) {
-            .OutPlotSpPoly(outo, prefix = "", ...)
-            .OutBarChartPoly(outo, prefix = "", ...)
-            .OutBarChartSpec(outo, prefix = "", ...)
-            .OutMapAll(outo, prefix = "", ...)
-            .OutMapPerSpecies(outo, prefix = "", ...)
-            .OutMapPerPoly(outo, areanames, prefix = "", ...)
+            .OutPlotSpPoly(outo, prefix = "")
+            .OutBarChartPoly(outo, prefix = "")
+            .OutBarChartSpec(outo, prefix = "")
+            .OutMapAll(outo, prefix = "")
+            .OutMapPerSpecies(outo, prefix = "")
+            .OutMapPerPoly(outo, areanames, prefix = "")
         }
     }
 } 

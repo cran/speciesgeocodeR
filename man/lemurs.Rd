@@ -5,7 +5,7 @@
 Distribution of Lemur Species
 }
 \description{
-A data frame with point occurrences of 39 Lemur species from Madagascar in the right input format for the \code{\link{GeoClean}}.  The data is from GBIF.
+A \code{data.frame} with point occurrences of 39 Lemur species from Madagascar as example for the input format for the \code{\link{GeoClean}} function.  The data is from GBIF.
 }
 \usage{data("lemurs")}
 \format{

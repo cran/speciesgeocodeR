@@ -5,7 +5,7 @@
 Country Centroids and Country Capitals
 }
 \description{
-This is a data.frame with coordinates of country centroids and country capitals for the \code{\link{GeoClean}} function.  Coordinates are based on the Central Intelligence Agency World Factbook as provided at http://opengeocode.org/download/cow.php.
+A \code{data.frame} with coordinates of country centroids and country capitals as reference for the \code{\link{GeoClean}} function.  Coordinates are based on the Central Intelligence Agency World Factbook as provided at http://opengeocode.org/download/cow.php.
 }
 \usage{data("countryref")}
 \format{

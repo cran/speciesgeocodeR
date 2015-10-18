@@ -10,7 +10,7 @@ Plots species distribution ranges derived with \code{\link{CalcRange}} in the ge
 \usage{
 PlotHull(dat, xlim = c(-180, 180), ylim = c(-90, 90),
          col = rgb(255, 0, 0, 50, maxColorValue = 255),
-         border = rgb(255, 0, 0, 50, maxColorValue = 255),
+	 border = rgb(255, 0, 0, 50, maxColorValue = 255),
 	 type = "overlay", select = "all", ...)
 }
 
@@ -37,7 +37,7 @@ a character string indicating if all range polygons in the input file shall be o
 a character string indicating which elements of the list to plot. Can be one or multiple species names. Default = \dQuote{all}.
 }
 \item{\dots}{
-arguments passed to \code{\link{plot}}.
+additional arguments passed to \code{\link{plot}}.
 }
 }
 \details{

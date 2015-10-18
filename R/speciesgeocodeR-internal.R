@@ -938,6 +938,7 @@
   return(spec_sum)
 } 
 .testcordcap <- function(x, reftab, capthresh) {
+  capout <- NA
     if (is.na(as.character(unlist(x["country"]))) | is.na(suppressWarnings(as.numeric(as.character(x["XCOOR"])))) |
           is.na(suppressWarnings(as.numeric(as.character(x["YCOOR"])))) | as.character(unlist(x["country"])) == "") {
         capout <- NA
@@ -969,6 +970,7 @@
     return(capout)
 }
 .testcordcountr <- function(x, reftab, contthresh) {
+  contout <- NA
     if (is.na(as.character(unlist(x["country"]))) | is.na(suppressWarnings(as.numeric(as.character(x["XCOOR"])))) | 
           is.na(suppressWarnings(as.numeric(as.character(x["YCOOR"])))) | as.character(unlist(x["country"])) == "") {
         contout <- NA

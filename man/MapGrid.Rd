@@ -19,7 +19,7 @@ Additional arguments past to plot.
 }
 }
 \note{
-See the speciesgeocodeR documentation for further information and examples.
+See the speciesgeocodeR tutorial for further information and examples.
 }
 \seealso{
  \code{\link{RichnessGrid}}

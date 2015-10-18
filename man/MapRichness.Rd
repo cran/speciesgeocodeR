@@ -5,7 +5,7 @@
 Plotting Species Richness in a Set of Polygons
 }
 \description{
-Illustrates the species number of the input polygons, based on and object of the class spgeoOUT (created by \code{\link{SpGeoCod}}). 
+Illustrates the species number per polygon, based on and object of the class \code{spgeoOUT} (created by \code{\link{SpGeoCod}}). 
 }
 \usage{
 MapRichness(x, areanames = NA, leg = "continuous",
@@ -17,7 +17,7 @@ MapRichness(x, areanames = NA, leg = "continuous",
 an object of the class ''spgeoOUT''.
 }
   \item{areanames}{
-character string.  If the polygons in the spgeoIN object were derived from a shape file, this column indicates the name of the column used for area names.  .  If the polygons in the spgeoIN object were derived from a text file leave as default (Default = "").
+a character string.  If the polygons in the spgeoIN object were derived from a shape file, this column indicates the name of the column used for area names.  If the polygons in the spgeoIN object were derived from a text file leave as default (Default = "").
 }
   \item{leg}{
 Controls the plot legend and coloring scheme.  Must be either \dQuote{continuous} or \dQuote{discrete}, (default = continuous).
@@ -42,7 +42,7 @@ A plotted map.
  \code{\link{RichnessGrid}}, \code{\link{MapGrid}}, \code{\link{RangeRichness}}.
 }
 \note{
-See the speciesgeocodeR documentation for further information and examples.
+See the speciesgeocodeR tutorial for further information and examples.
 }
 
 \examples{

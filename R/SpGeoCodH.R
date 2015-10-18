@@ -1,4 +1,4 @@
-SpGeoCodH <- function(x, areanames = NULL, occ.thresh = 0, ...) {
+SpGeoCodH <- function(x, areanames = NULL, occ.thresh = 0) {
     if (class(x) == "spgeoIN") {
         if (class(x$polygons) == "SpatialPolygons") {
             if ("NA" %in% names(x$polygons)) {
@@ -7,7 +7,7 @@ SpGeoCodH <- function(x, areanames = NULL, occ.thresh = 0, ...) {
         }
         if (class(x$polygons) == "SpatialPolygonsDataFrame") {
           if (!areanames %in% names(x$polygons@data)){
-            stop(sprintf("column '%s' not found", areanames))
+            stop(sprintf("column '%s' not found", "areanames"))
           }  
           nam.test <- as.vector(unlist(x$polygons@data[, areanames]))
             if ("NA" %in% nam.test) {
